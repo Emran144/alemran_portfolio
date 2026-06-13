@@ -4,7 +4,7 @@ import SectionHeader from "./SectionHeader";
 
 const LINKS = [
   { icon: "📧", label: "Email",          value: personal.email,                        href: `mailto:${personal.email}` },
-  { icon: "💼", label: "LinkedIn",       value: "linkedin.com/in/md-al-emran-hossain", href: personal.linkedin },
+  { icon: "💼", label: "LinkedIn",       value: "linkedin.com/in/alemranhossain",      href: personal.linkedin },
   { icon: "🐙", label: "GitHub",         value: "github.com/Emran144",                 href: personal.github },
   { icon: "🎓", label: "Google Scholar", value: "Scholar Profile",                     href: personal.googleScholar },
 ];
