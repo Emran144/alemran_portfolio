@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useTheme } from "./ThemeProvider";
 
 const NAV_LINKS = [
@@ -43,9 +44,16 @@ export default function Navbar() {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           aria-label="Go to top"
-          style={{ background: "none", border: "none", cursor: "pointer", fontWeight: 800, fontSize: "1.2rem", color: "var(--accent)", letterSpacing: "-0.03em" }}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
         >
-          Emran<span style={{ color: "var(--text)" }}>.</span>
+          <Image
+            src="/alemran_portfolio/logo.png"
+            alt="Al Emran logo"
+            width={110}
+            height={44}
+            style={{ objectFit: "contain" }}
+            priority
+          />
         </button>
 
         <nav aria-label="Main navigation" className="desktop-nav">
