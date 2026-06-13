@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { personal } from "@/data/personal";
 
 const roles = [
@@ -67,174 +68,215 @@ export default function Hero() {
 
       <div
         style={{
-          maxWidth: 900,
+          maxWidth: 1000,
           width: "100%",
           position: "relative",
           zIndex: 1,
-          textAlign: "center",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "4rem",
+          flexWrap: "wrap",
         }}
       >
-        <p
-          style={{
-            color: "var(--accent)",
-            fontWeight: 600,
-            fontSize: "0.9rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            marginBottom: "1rem",
-          }}
-        >
-          👋 Hello, I&apos;m
-        </p>
-
-        <h1
-          style={{
-            fontSize: "clamp(2.5rem, 8vw, 5rem)",
-            fontWeight: 800,
-            letterSpacing: "-0.04em",
-            lineHeight: 1.1,
-            color: "var(--text)",
-            marginBottom: "1.25rem",
-          }}
-        >
-          {personal.name}
-        </h1>
-
-        <div
-          style={{
-            fontSize: "clamp(1.1rem, 3vw, 1.6rem)",
-            fontWeight: 600,
-            color: "var(--accent)",
-            minHeight: "2em",
-            marginBottom: "1.5rem",
-          }}
-        >
-          {displayed}
-          <span
+        {/* Avatar */}
+        <div style={{ flexShrink: 0 }}>
+          <div
             style={{
-              borderRight: "2px solid var(--accent)",
-              marginLeft: "2px",
-              animation: "blink 1s step-end infinite",
+              position: "relative",
+              width: 220,
+              height: 220,
+              borderRadius: "50%",
+              padding: 4,
+              background: "linear-gradient(135deg, var(--accent), var(--violet))",
+              boxShadow: "0 0 40px color-mix(in srgb, var(--accent) 30%, transparent)",
             }}
-          />
-        </div>
-
-        <p
-          style={{
-            maxWidth: 680,
-            margin: "0 auto 2.5rem",
-            color: "var(--text-muted)",
-            fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
-            lineHeight: 1.8,
-          }}
-        >
-          {personal.tagline}
-        </p>
-
-        {/* Stats */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: "1.5rem",
-            marginBottom: "2.5rem",
-          }}
-        >
-          {personal.stats.map((s) => (
+          >
             <div
-              key={s.label}
               style={{
-                textAlign: "center",
-                padding: "0.75rem 1.5rem",
-                borderRadius: "0.75rem",
-                backgroundColor: "var(--bg-card)",
-                border: "1px solid var(--border)",
+                width: "100%",
+                height: "100%",
+                borderRadius: "50%",
+                overflow: "hidden",
+                border: "3px solid var(--bg)",
               }}
             >
-              <div
-                style={{
-                  fontSize: "1.75rem",
-                  fontWeight: 800,
-                  color: "var(--accent)",
-                  lineHeight: 1,
-                }}
-              >
-                {s.value}
-              </div>
-              <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "0.25rem" }}>
-                {s.label}
-              </div>
+              <Image
+                src="/alemran_portfolio/avatar.png"
+                alt="Md Al Emran Hossain"
+                width={220}
+                height={220}
+                style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                priority
+              />
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* CTAs */}
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <button
-            onClick={() => scrollTo("#projects")}
+        {/* Text content */}
+        <div style={{ textAlign: "left", minWidth: 280, flex: 1 }}>
+          <p
             style={{
-              padding: "0.75rem 2rem",
-              borderRadius: "0.625rem",
+              color: "var(--accent)",
               fontWeight: 600,
-              fontSize: "0.95rem",
-              cursor: "pointer",
-              border: "none",
-              backgroundColor: "var(--accent)",
-              color: "#fff",
-              transition: "opacity 0.2s",
+              fontSize: "0.9rem",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              marginBottom: "0.75rem",
             }}
-            onMouseEnter={(e) => ((e.target as HTMLElement).style.opacity = "0.85")}
-            onMouseLeave={(e) => ((e.target as HTMLElement).style.opacity = "1")}
           >
-            View Projects
-          </button>
-          <a
-            href={personal.resumeUrl}
-            download
+            👋 Hello, I&apos;m
+          </p>
+
+          <h1
             style={{
-              padding: "0.75rem 2rem",
-              borderRadius: "0.625rem",
-              fontWeight: 600,
-              fontSize: "0.95rem",
-              cursor: "pointer",
-              border: "1.5px solid var(--border)",
-              backgroundColor: "transparent",
+              fontSize: "clamp(2rem, 6vw, 3.75rem)",
+              fontWeight: 800,
+              letterSpacing: "-0.04em",
+              lineHeight: 1.1,
               color: "var(--text)",
-              textDecoration: "none",
-              transition: "border-color 0.2s",
+              marginBottom: "1rem",
             }}
-            onMouseEnter={(e) =>
-              ((e.target as HTMLElement).style.borderColor = "var(--accent)")
-            }
-            onMouseLeave={(e) =>
-              ((e.target as HTMLElement).style.borderColor = "var(--border)")
-            }
           >
-            Download CV
-          </a>
-          <button
-            onClick={() => scrollTo("#contact")}
+            {personal.name}
+          </h1>
+
+          <div
             style={{
-              padding: "0.75rem 2rem",
-              borderRadius: "0.625rem",
+              fontSize: "clamp(1rem, 2.5vw, 1.4rem)",
               fontWeight: 600,
-              fontSize: "0.95rem",
-              cursor: "pointer",
-              border: "1.5px solid var(--border)",
-              backgroundColor: "transparent",
-              color: "var(--text)",
-              transition: "border-color 0.2s",
+              color: "var(--accent)",
+              minHeight: "2em",
+              marginBottom: "1.25rem",
             }}
-            onMouseEnter={(e) =>
-              ((e.target as HTMLElement).style.borderColor = "var(--accent)")
-            }
-            onMouseLeave={(e) =>
-              ((e.target as HTMLElement).style.borderColor = "var(--border)")
-            }
           >
-            Contact Me
-          </button>
+            {displayed}
+            <span
+              style={{
+                borderRight: "2px solid var(--accent)",
+                marginLeft: "2px",
+                animation: "blink 1s step-end infinite",
+              }}
+            />
+          </div>
+
+          <p
+            style={{
+              maxWidth: 560,
+              marginBottom: "2rem",
+              color: "var(--text-muted)",
+              fontSize: "clamp(0.875rem, 1.8vw, 1rem)",
+              lineHeight: 1.8,
+            }}
+          >
+            {personal.tagline}
+          </p>
+
+          {/* Stats */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "1rem",
+              marginBottom: "2rem",
+            }}
+          >
+            {personal.stats.map((s) => (
+              <div
+                key={s.label}
+                style={{
+                  textAlign: "center",
+                  padding: "0.6rem 1.25rem",
+                  borderRadius: "0.75rem",
+                  backgroundColor: "var(--bg-card)",
+                  border: "1px solid var(--border)",
+                }}
+              >
+                <div
+                  style={{
+                    fontSize: "1.5rem",
+                    fontWeight: 800,
+                    color: "var(--accent)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {s.value}
+                </div>
+                <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "0.2rem" }}>
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
+            <button
+              onClick={() => scrollTo("#projects")}
+              style={{
+                padding: "0.7rem 1.75rem",
+                borderRadius: "0.625rem",
+                fontWeight: 600,
+                fontSize: "0.9rem",
+                cursor: "pointer",
+                border: "none",
+                backgroundColor: "var(--accent)",
+                color: "#fff",
+                transition: "opacity 0.2s",
+              }}
+              onMouseEnter={(e) => ((e.target as HTMLElement).style.opacity = "0.85")}
+              onMouseLeave={(e) => ((e.target as HTMLElement).style.opacity = "1")}
+            >
+              View Projects
+            </button>
+            <a
+              href={personal.resumeUrl}
+              download
+              style={{
+                padding: "0.7rem 1.75rem",
+                borderRadius: "0.625rem",
+                fontWeight: 600,
+                fontSize: "0.9rem",
+                cursor: "pointer",
+                border: "1.5px solid var(--border)",
+                backgroundColor: "transparent",
+                color: "var(--text)",
+                textDecoration: "none",
+                transition: "border-color 0.2s",
+              }}
+              onMouseEnter={(e) =>
+                ((e.target as HTMLElement).style.borderColor = "var(--accent)")
+              }
+              onMouseLeave={(e) =>
+                ((e.target as HTMLElement).style.borderColor = "var(--border)")
+              }
+            >
+              Download CV
+            </a>
+            <button
+              onClick={() => scrollTo("#contact")}
+              style={{
+                padding: "0.7rem 1.75rem",
+                borderRadius: "0.625rem",
+                fontWeight: 600,
+                fontSize: "0.9rem",
+                cursor: "pointer",
+                border: "1.5px solid var(--border)",
+                backgroundColor: "transparent",
+                color: "var(--text)",
+                transition: "border-color 0.2s",
+              }}
+              onMouseEnter={(e) =>
+                ((e.target as HTMLElement).style.borderColor = "var(--accent)")
+              }
+              onMouseLeave={(e) =>
+                ((e.target as HTMLElement).style.borderColor = "var(--border)")
+              }
+            >
+              Contact Me
+            </button>
+          </div>
         </div>
       </div>
 
@@ -282,6 +324,9 @@ export default function Hero() {
         @keyframes scrollDot {
           0% { transform: translateY(0); opacity: 1 }
           100% { transform: translateY(10px); opacity: 0 }
+        }
+        @media (max-width: 640px) {
+          #hero > div > div:first-child { display: flex; justify-content: center; }
         }
       `}</style>
     </section>
