@@ -6,10 +6,10 @@ export const personal = {
   email: "emrandocs@gmail.com",
   phone: "+880 1776-154462",
   location: "Dhaka, Bangladesh",
-  linkedin: "https://www.linkedin.com/in/md-al-emran-hossain/",
+  linkedin: "https://www.linkedin.com/in/alemranhossain/",
   github: "https://github.com/Emran144",
   googleScholar:
-    "https://scholar.google.com/citations?user=your-id",
+    "https://scholar.google.com/citations?user=l2CW1M4AAAAJ&hl=en&oi=ao",
   resumeUrl: "/alemran_portfolio/resume.pdf",
   objective:
     "Machine Learning Engineer with 4 years of industry experience specializing in developing and deploying advanced AI systems. I have expertise in Generative AI, Document AI, and Applied ML, with hands-on work across NLP, Computer Vision, and Automation. Skilled in Python and modern AI frameworks, I design scalable, production-grade solutions integrating LLMs, RAG pipelines, and OCR. My work focuses on delivering enterprise-ready AI applications while continuously advancing my technical and research capabilities in the evolving ML landscape.",
