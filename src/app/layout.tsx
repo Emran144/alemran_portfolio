@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { PortfolioProvider } from "@/context/PortfolioContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EditToolbar from "@/components/EditToolbar";
 
 export const metadata: Metadata = {
   title: "Md Al Emran Hossain | ML Engineer",
@@ -11,11 +13,7 @@ export const metadata: Metadata = {
   keywords: ["ML Engineer", "Machine Learning", "Document AI", "GenAI", "LLM", "OCR"],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -27,9 +25,12 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
+          <PortfolioProvider>
+            <Navbar />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <EditToolbar />
+          </PortfolioProvider>
         </ThemeProvider>
       </body>
     </html>

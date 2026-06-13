@@ -1,122 +1,53 @@
 "use client";
-import { achievements, extracurricular } from "@/data/achievements";
+import { usePortfolio } from "@/context/PortfolioContext";
 import SectionHeader from "./SectionHeader";
 
-const iconMap: Record<string, string> = {
-  trophy: "🏆",
-  star: "⭐",
-  medal: "🥇",
-  award: "🎖️",
-};
+const ICONS: Record<string, string> = { trophy: "🏆", star: "⭐", medal: "🥇", award: "🎖️" };
 
 export default function Achievements() {
+  const { data } = usePortfolio();
+  const { achievements, extracurricular } = data;
+
   return (
-    <section id="achievements" style={{ padding: "5rem 1.5rem", backgroundColor: "var(--bg)" }}>
+    <section id="achievements" aria-labelledby="achievements-heading" style={{ padding: "5rem 1.5rem", backgroundColor: "var(--bg)" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <SectionHeader
-          title="Achievements"
-          subtitle="Academic honors and competition wins"
-        />
+        <SectionHeader id="achievements-heading" title="Achievements" subtitle="Academic honors and competition wins" />
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-            gap: "1.25rem",
-            marginBottom: "3rem",
-          }}
-        >
-          {achievements.map((item) => (
-            <div
-              key={item.id}
-              style={{
-                display: "flex",
-                gap: "1rem",
-                backgroundColor: "var(--bg-card)",
-                border: "1px solid var(--border)",
-                borderRadius: "0.875rem",
-                padding: "1.25rem",
-                transition: "border-color 0.2s",
-              }}
-              onMouseEnter={(e) =>
-                ((e.currentTarget as HTMLElement).style.borderColor = "var(--accent)")
-              }
-              onMouseLeave={(e) =>
-                ((e.currentTarget as HTMLElement).style.borderColor = "var(--border)")
-              }
-            >
-              <div
-                style={{
-                  flexShrink: 0,
-                  width: 40,
-                  height: 40,
-                  borderRadius: "0.5rem",
-                  backgroundColor: "var(--accent-bg)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: "1.1rem",
-                }}
+        <ul style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1.25rem", listStyle: "none", margin: "0 0 3rem", padding: 0 }}>
+          {achievements.map(item => (
+            <li key={item.id}>
+              <article
+                style={{ display: "flex", gap: "1rem", backgroundColor: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "0.875rem", padding: "1.25rem", transition: "border-color 0.2s", height: "100%", boxSizing: "border-box" }}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--accent)")}
+                onMouseLeave={e => (e.currentTarget.style.borderColor = "var(--border)")}
               >
-                {iconMap[item.icon] ?? "🏅"}
-              </div>
-              <div>
-                <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", marginBottom: "0.25rem" }}>
-                  <span style={{ fontWeight: 700, color: "var(--text)", fontSize: "0.925rem" }}>
-                    {item.title}
-                  </span>
-                  <span style={{ fontSize: "0.75rem", color: "var(--accent)", fontWeight: 600 }}>
-                    [{item.year}]
-                  </span>
+                <div aria-hidden="true" style={{ flexShrink: 0, width: 40, height: 40, borderRadius: "0.5rem", backgroundColor: "var(--accent-bg)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.1rem" }}>
+                  {ICONS[item.icon] ?? "🏅"}
                 </div>
-                <p style={{ color: "var(--text-muted)", fontSize: "0.825rem", lineHeight: 1.5 }}>
-                  {item.description}
-                </p>
-              </div>
-            </div>
+                <div>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem", marginBottom: "0.25rem", flexWrap: "wrap" }}>
+                    <strong style={{ fontWeight: 700, color: "var(--text)", fontSize: "0.9rem" }}>{item.title}</strong>
+                    <time style={{ fontSize: "0.75rem", color: "var(--accent)", fontWeight: 600 }}>[{item.year}]</time>
+                  </div>
+                  <p style={{ color: "var(--text-muted)", fontSize: "0.82rem", lineHeight: 1.5 }}>{item.description}</p>
+                </div>
+              </article>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Extracurricular */}
-        <h3
-          style={{
-            fontWeight: 700,
-            fontSize: "1.15rem",
-            color: "var(--text)",
-            marginBottom: "1.25rem",
-          }}
-        >
-          Extracurricular
-        </h3>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-            gap: "0.75rem",
-          }}
-        >
+        <h3 style={{ fontWeight: 700, fontSize: "1.1rem", color: "var(--text)", marginBottom: "1.25rem" }}>Extracurricular</h3>
+        <ul style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: "0.75rem", listStyle: "none", margin: 0, padding: 0 }}>
           {extracurricular.map((item, i) => (
-            <div
-              key={i}
-              style={{
-                backgroundColor: "var(--bg-card)",
-                border: "1px solid var(--border)",
-                borderRadius: "0.75rem",
-                padding: "1rem",
-              }}
-            >
+            <li key={i} style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "0.75rem", padding: "1rem" }}>
               <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.25rem" }}>
-                <span style={{ fontWeight: 600, color: "var(--text)", fontSize: "0.875rem" }}>
-                  {item.role}
-                </span>
-                <span style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{item.period}</span>
+                <strong style={{ fontWeight: 600, color: "var(--text)", fontSize: "0.875rem" }}>{item.role}</strong>
+                <time style={{ fontSize: "0.75rem", color: "var(--text-muted)" }}>{item.period}</time>
               </div>
-              <p style={{ color: "var(--accent)", fontSize: "0.8rem", marginTop: "0.2rem" }}>
-                {item.org}
-              </p>
-            </div>
+              <p style={{ color: "var(--accent)", fontSize: "0.8rem", marginTop: "0.2rem" }}>{item.org}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
