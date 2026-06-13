@@ -1,18 +1,15 @@
 "use client";
-import { usePortfolio } from "@/context/PortfolioContext";
+import { personal } from "@/data/personal";
 import SectionHeader from "./SectionHeader";
 
+const LINKS = [
+  { icon: "📧", label: "Email",          value: personal.email,                        href: `mailto:${personal.email}` },
+  { icon: "💼", label: "LinkedIn",       value: "linkedin.com/in/md-al-emran-hossain", href: personal.linkedin },
+  { icon: "🐙", label: "GitHub",         value: "github.com/Emran144",                 href: personal.github },
+  { icon: "🎓", label: "Google Scholar", value: "Scholar Profile",                     href: personal.googleScholar },
+];
+
 export default function Contact() {
-  const { data } = usePortfolio();
-  const { personal } = data;
-
-  const links = [
-    { icon: "📧", label: "Email",         value: personal.email,                      href: `mailto:${personal.email}` },
-    { icon: "💼", label: "LinkedIn",      value: "linkedin.com/in/md-al-emran-hossain", href: personal.linkedin },
-    { icon: "🐙", label: "GitHub",        value: "github.com/Emran144",               href: personal.github },
-    { icon: "🎓", label: "Google Scholar", value: "Scholar Profile",                  href: personal.googleScholar },
-  ];
-
   return (
     <section id="contact" aria-labelledby="contact-heading" style={{ padding: "5rem 1.5rem", backgroundColor: "var(--bg-secondary)", textAlign: "center" }}>
       <div style={{ maxWidth: 700, margin: "0 auto" }}>
@@ -23,7 +20,7 @@ export default function Contact() {
 
         <address style={{ fontStyle: "normal" }}>
           <ul style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.25rem", listStyle: "none", margin: "0 0 3rem", padding: 0 }}>
-            {links.map(link => (
+            {LINKS.map(link => (
               <li key={link.label}>
                 <a
                   href={link.href}

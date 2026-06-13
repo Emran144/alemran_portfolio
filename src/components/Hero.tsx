@@ -1,8 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { usePortfolio } from "@/context/PortfolioContext";
-import EditableText from "./EditableText";
+import { personal } from "@/data/personal";
 
 const ROLES = [
   "Senior ML Engineer",
@@ -13,8 +12,6 @@ const ROLES = [
 ];
 
 export default function Hero() {
-  const { data, updatePersonal } = usePortfolio();
-  const { personal } = data;
   const [roleIdx, setRoleIdx] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [deleting, setDeleting] = useState(false);
@@ -48,7 +45,6 @@ export default function Hero() {
         background: "radial-gradient(ellipse 80% 50% at 50% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent)",
       }}
     >
-      {/* Grid background */}
       <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)", backgroundSize: "60px 60px", opacity: 0.25 }} />
 
       <div style={{ maxWidth: 1000, width: "100%", position: "relative", zIndex: 1, display: "flex", alignItems: "center", gap: "4rem", flexWrap: "wrap", justifyContent: "center" }}>
@@ -74,39 +70,26 @@ export default function Hero() {
           <p style={{ color: "var(--accent)", fontWeight: 600, fontSize: "0.85rem", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "0.75rem" }}>
             👋 Hello, I&apos;m
           </p>
-
           <h1 style={{ fontSize: "clamp(2rem, 5.5vw, 3.5rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1.1, color: "var(--text)", marginBottom: "0.875rem" }}>
-            <EditableText
-              value={personal.name}
-              onSave={v => updatePersonal({ name: v })}
-            />
+            {personal.name}
           </h1>
-
           <p style={{ fontSize: "clamp(1rem, 2.5vw, 1.35rem)", fontWeight: 600, color: "var(--accent)", minHeight: "1.8em", marginBottom: "1.25rem" }}>
             {displayed}
             <span aria-hidden="true" style={{ borderRight: "2px solid var(--accent)", marginLeft: "2px", animation: "blink 1s step-end infinite" }} />
           </p>
-
           <p style={{ color: "var(--text-muted)", fontSize: "clamp(0.875rem, 1.8vw, 0.975rem)", lineHeight: 1.85, marginBottom: "2rem" }}>
-            <EditableText
-              as="span"
-              value={personal.tagline}
-              onSave={v => updatePersonal({ tagline: v })}
-              multiline
-            />
+            {personal.tagline}
           </p>
 
-          {/* Stats */}
           <dl style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem", marginBottom: "2rem" }}>
             {personal.stats.map((s) => (
               <div key={s.label} style={{ textAlign: "center", padding: "0.6rem 1.25rem", borderRadius: "0.75rem", backgroundColor: "var(--bg-card)", border: "1px solid var(--border)" }}>
-                <dt style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "0.2rem", order: 2 }}>{s.label}</dt>
                 <dd style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--accent)", lineHeight: 1, margin: 0 }}>{s.value}</dd>
+                <dt style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "0.2rem" }}>{s.label}</dt>
               </div>
             ))}
           </dl>
 
-          {/* CTAs */}
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             <button
               onClick={() => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })}
@@ -131,7 +114,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div aria-hidden="true" style={{ position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)", display: "flex", flexDirection: "column", alignItems: "center", gap: "0.25rem", color: "var(--text-muted)", fontSize: "0.7rem" }}>
         <div style={{ width: 20, height: 32, border: "2px solid var(--border)", borderRadius: 10, display: "flex", justifyContent: "center", paddingTop: 4 }}>
           <div style={{ width: 4, height: 8, borderRadius: 2, backgroundColor: "var(--accent)", animation: "scrollDot 1.5s ease-in-out infinite" }} />

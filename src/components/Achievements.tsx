@@ -1,13 +1,10 @@
 "use client";
-import { usePortfolio } from "@/context/PortfolioContext";
+import { achievements, extracurricular } from "@/data/achievements";
 import SectionHeader from "./SectionHeader";
 
 const ICONS: Record<string, string> = { trophy: "🏆", star: "⭐", medal: "🥇", award: "🎖️" };
 
 export default function Achievements() {
-  const { data } = usePortfolio();
-  const { achievements, extracurricular } = data;
-
   return (
     <section id="achievements" aria-labelledby="achievements-heading" style={{ padding: "5rem 1.5rem", backgroundColor: "var(--bg)" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -17,7 +14,7 @@ export default function Achievements() {
           {achievements.map(item => (
             <li key={item.id}>
               <article
-                style={{ display: "flex", gap: "1rem", backgroundColor: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "0.875rem", padding: "1.25rem", transition: "border-color 0.2s", height: "100%", boxSizing: "border-box" }}
+                style={{ display: "flex", gap: "1rem", backgroundColor: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "0.875rem", padding: "1.25rem", height: "100%", boxSizing: "border-box", transition: "border-color 0.2s" }}
                 onMouseEnter={e => (e.currentTarget.style.borderColor = "var(--accent)")}
                 onMouseLeave={e => (e.currentTarget.style.borderColor = "var(--border)")}
               >

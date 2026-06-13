@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
-import { usePortfolio } from "@/context/PortfolioContext";
-import { ProjectCategory } from "@/data/projects";
+import { projects, ProjectCategory } from "@/data/projects";
 import SectionHeader from "./SectionHeader";
 
 const CATS: ("All" | ProjectCategory)[] = ["All", "Industry", "MLOps", "Research"];
@@ -12,30 +11,19 @@ const catColor = (c: ProjectCategory) =>
   :                  { bg: "rgba(34,197,94,0.1)", text: "#16a34a" };
 
 export default function Projects() {
-  const { data, setSection, isEditMode } = usePortfolio();
-  const { projects } = data;
   const [active, setActive] = useState<"All" | ProjectCategory>("All");
   const [expanded, setExpanded] = useState<number | null>(null);
-
   const filtered = active === "All" ? projects : projects.filter(p => p.category === active);
-
-  const deleteProject = (id: number) => setSection("projects", projects.filter(p => p.id !== id));
 
   return (
     <section id="projects" aria-labelledby="projects-heading" style={{ padding: "5rem 1.5rem", backgroundColor: "var(--bg-secondary)" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <SectionHeader id="projects-heading" title="Projects" subtitle="Industry, research & MLOps work" />
 
-        {/* Filter tabs */}
         <div role="tablist" aria-label="Project categories" style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2.5rem" }}>
           {CATS.map(cat => (
-            <button
-              key={cat}
-              role="tab"
-              aria-selected={active === cat}
-              onClick={() => setActive(cat)}
-              style={{ padding: "0.4rem 1.25rem", borderRadius: "2rem", fontSize: "0.875rem", fontWeight: 600, cursor: "pointer", border: "1.5px solid", borderColor: active === cat ? "var(--accent)" : "var(--border)", backgroundColor: active === cat ? "var(--accent)" : "transparent", color: active === cat ? "#fff" : "var(--text-muted)", transition: "all 0.2s" }}
-            >
+            <button key={cat} role="tab" aria-selected={active === cat} onClick={() => setActive(cat)}
+              style={{ padding: "0.4rem 1.25rem", borderRadius: "2rem", fontSize: "0.875rem", fontWeight: 600, cursor: "pointer", border: "1.5px solid", borderColor: active === cat ? "var(--accent)" : "var(--border)", backgroundColor: active === cat ? "var(--accent)" : "transparent", color: active === cat ? "#fff" : "var(--text-muted)", transition: "all 0.2s" }}>
               {cat}
             </button>
           ))}
@@ -47,7 +35,7 @@ export default function Projects() {
             return (
               <li key={proj.id}>
                 <article
-                  style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "1rem", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.75rem", height: "100%", transition: "border-color 0.2s, transform 0.2s", boxSizing: "border-box" }}
+                  style={{ backgroundColor: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "1rem", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.75rem", height: "100%", boxSizing: "border-box", transition: "border-color 0.2s, transform 0.2s" }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--accent)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border)"; e.currentTarget.style.transform = "translateY(0)"; }}
                 >
@@ -56,10 +44,7 @@ export default function Projects() {
                       <h3 style={{ fontWeight: 700, color: "var(--text)", fontSize: "0.975rem", lineHeight: 1.3 }}>{proj.title}</h3>
                       {proj.subtitle && <p style={{ color: "var(--text-muted)", fontSize: "0.8rem", marginTop: "0.1rem" }}>{proj.subtitle}</p>}
                     </div>
-                    <div style={{ display: "flex", gap: "0.25rem", alignItems: "center", flexShrink: 0 }}>
-                      <span style={{ fontSize: "0.7rem", fontWeight: 700, padding: "0.2rem 0.5rem", borderRadius: "0.375rem", backgroundColor: cc.bg, color: cc.text }}>{proj.category}</span>
-                      {isEditMode && <button onClick={() => deleteProject(proj.id)} aria-label={`Delete ${proj.title}`} style={{ background: "none", border: "1px solid #ef4444", borderRadius: "0.25rem", cursor: "pointer", color: "#ef4444", fontSize: "0.7rem", padding: "0.15rem 0.4rem" }}>✕</button>}
-                    </div>
+                    <span style={{ fontSize: "0.7rem", fontWeight: 700, padding: "0.2rem 0.5rem", borderRadius: "0.375rem", backgroundColor: cc.bg, color: cc.text, flexShrink: 0 }}>{proj.category}</span>
                   </header>
 
                   <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.25rem" }}>
@@ -77,11 +62,8 @@ export default function Projects() {
                     ))}
                   </ul>
 
-                  <button
-                    onClick={() => setExpanded(expanded === proj.id ? null : proj.id)}
-                    aria-expanded={expanded === proj.id}
-                    style={{ background: "none", border: "none", cursor: "pointer", color: "var(--accent)", fontSize: "0.8rem", textAlign: "left", padding: 0, fontWeight: 600 }}
-                  >
+                  <button onClick={() => setExpanded(expanded === proj.id ? null : proj.id)} aria-expanded={expanded === proj.id}
+                    style={{ background: "none", border: "none", cursor: "pointer", color: "var(--accent)", fontSize: "0.8rem", textAlign: "left", padding: 0, fontWeight: 600 }}>
                     {expanded === proj.id ? "▲ Less" : "▼ Details"}
                   </button>
 

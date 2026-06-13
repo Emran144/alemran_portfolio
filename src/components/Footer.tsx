@@ -1,10 +1,7 @@
 "use client";
-import { usePortfolio } from "@/context/PortfolioContext";
+import { personal } from "@/data/personal";
 
 export default function Footer() {
-  const { data } = usePortfolio();
-  const { personal } = data;
-
   return (
     <footer role="contentinfo" style={{ borderTop: "1px solid var(--border)", backgroundColor: "var(--bg)", padding: "2rem 1.5rem", textAlign: "center" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
@@ -14,10 +11,10 @@ export default function Footer() {
         <nav aria-label="Footer navigation">
           <ul style={{ display: "flex", justifyContent: "center", gap: "1.5rem", marginTop: "0.75rem", listStyle: "none", padding: 0 }}>
             {[
-              { label: "GitHub",  href: personal.github },
+              { label: "GitHub",   href: personal.github },
               { label: "LinkedIn", href: personal.linkedin },
-              { label: "Scholar", href: personal.googleScholar },
-              { label: "Email",   href: `mailto:${personal.email}` },
+              { label: "Scholar",  href: personal.googleScholar },
+              { label: "Email",    href: `mailto:${personal.email}` },
             ].map(l => (
               <li key={l.label}>
                 <a

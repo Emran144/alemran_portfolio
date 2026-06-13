@@ -1,5 +1,5 @@
 "use client";
-import { usePortfolio } from "@/context/PortfolioContext";
+import { publications } from "@/data/publications";
 import SectionHeader from "./SectionHeader";
 
 const TYPE_COLORS: Record<string, string> = {
@@ -9,9 +9,6 @@ const TYPE_COLORS: Record<string, string> = {
 };
 
 export default function Publications() {
-  const { data } = usePortfolio();
-  const { publications } = data;
-
   return (
     <section id="publications" aria-labelledby="pubs-heading" style={{ padding: "5rem 1.5rem", backgroundColor: "var(--bg)" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { PortfolioProvider } from "@/context/PortfolioContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import EditToolbar from "@/components/EditToolbar";
 
 export const metadata: Metadata = {
   title: "Md Al Emran Hossain | ML Engineer",
@@ -25,12 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <ThemeProvider>
-          <PortfolioProvider>
-            <Navbar />
-            <main id="main-content">{children}</main>
-            <Footer />
-            <EditToolbar />
-          </PortfolioProvider>
+          <Navbar />
+          <main id="main-content">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
