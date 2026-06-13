@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Md Al Emran Hossain — Portfolio
 
-## Getting Started
+Personal portfolio site built with Next.js, deployed at **https://emran144.github.io/alemran_portfolio/**
 
-First, run the development server:
+---
+
+## Making Content Changes
+
+All portfolio content lives in `src/data/`. You never need to touch component code to update your info.
+
+| File | What it controls |
+|---|---|
+| `src/data/personal.ts` | Name, tagline, email, phone, links, stats |
+| `src/data/experience.ts` | Work history and education |
+| `src/data/projects.ts` | All projects (Industry / MLOps / Research) |
+| `src/data/publications.ts` | Papers with DOI links |
+| `src/data/skills.ts` | Skill groups and individual skills |
+| `src/data/achievements.ts` | Awards and extracurricular activities |
+
+### Steps to apply a change
+
+1. Edit the relevant file in `src/data/`
+2. Commit and push:
+   ```bash
+   git add src/data/
+   git commit -m "update: <what you changed>"
+   git push
+   ```
+3. GitHub Actions will automatically build and deploy — your live site updates in ~2 minutes.
+
+To watch the deployment: **https://github.com/Emran144/alemran_portfolio/actions**
+
+---
+
+## Preview Locally Before Pushing
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install       # only needed once
+npm run dev       # starts at http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Changes to `src/data/` files hot-reload instantly in the browser while `dev` is running.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Replacing the Profile Photo
 
-## Learn More
+1. Put your new photo at `public/avatar.png` (overwrite the existing file)
+2. Commit and push:
+   ```bash
+   git add public/avatar.png
+   git commit -m "update: profile photo"
+   git push
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Replacing the CV / Resume
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Put your new PDF at `public/resume.pdf` (overwrite the existing file)
+2. Commit and push:
+   ```bash
+   git add public/resume.pdf
+   git commit -m "update: resume"
+   git push
+   ```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Local Commands
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev      # development server with hot reload
+npm run build    # production build (outputs to ./out/)
+npm run lint     # ESLint
+```
