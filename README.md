@@ -57,10 +57,10 @@ Changes to `src/data/` files hot-reload instantly in the browser while `dev` is 
 
 ## Replacing the CV / Resume
 
-1. Put your new PDF at `public/resume.pdf` (overwrite the existing file)
+1. Put your new PDF at `public/resume_Md_Al_Emran_Hossain.pdf` (overwrite the existing file; keep this name — it is the downloaded filename)
 2. Commit and push:
    ```bash
-   git add public/resume.pdf
+   git add public/resume_Md_Al_Emran_Hossain.pdf
    git commit -m "update: resume"
    git push
    ```

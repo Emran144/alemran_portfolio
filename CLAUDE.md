@@ -38,4 +38,4 @@ All CV/portfolio content lives in `src/data/`:
 
 - All components that use `onMouseEnter`/`onMouseLeave` or any React state must have `"use client"` at the top
 - Images must use `unoptimized: true` (already set in `next.config.ts`) since GitHub Pages can't do Next.js image optimization
-- The CV PDF is at `public/resume.pdf`
+- The CV PDF is at `public/resume_Md_Al_Emran_Hossain.pdf` (served and downloaded under that name)

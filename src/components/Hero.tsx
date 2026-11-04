@@ -100,7 +100,7 @@ export default function Hero() {
             </button>
             <a
               href={personal.resumeUrl}
-              download
+              download={personal.resumeFileName}
               style={{ padding: "0.7rem 1.75rem", borderRadius: "0.625rem", fontWeight: 600, fontSize: "0.9rem", border: "1.5px solid var(--border)", backgroundColor: "transparent", color: "var(--text)", textDecoration: "none" }}
             >
               Download CV

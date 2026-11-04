@@ -195,7 +195,8 @@ export const projects: Project[] = [
     tags: ["MLOps", "RPA", "Production", "APIs"],
     bullets: [
       "Led end-to-end MLOps deployment of ML-driven document intelligence and RPA automation pipelines for large-scale RMG operations.",
-      "Operationalized document classification and structured/unstructured data extraction models, resulting in 86% reduction in manual effort.",
+      "Operationalized document classification, structured/unstructured data extraction, and form automation models, integrating ML services with RPA workflows via production-grade APIs.",
+      "Resulted in an 86% reduction in manual effort and operational errors.",
     ],
   },
   {
