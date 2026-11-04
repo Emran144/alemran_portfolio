@@ -18,11 +18,28 @@ export default function Navbar() {
   const { theme, toggle } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  // Highlight the nav link for the section currently in view
+  useEffect(() => {
+    const sections = NAV_LINKS
+      .map(l => document.querySelector<HTMLElement>(l.href))
+      .filter((el): el is HTMLElement => el !== null);
+    const observer = new IntersectionObserver(
+      entries => {
+        const visible = entries.filter(e => e.isIntersecting);
+        if (visible.length) setActiveId(`#${visible[0].target.id}`);
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    sections.forEach(s => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   const scrollTo = (href: string) => {
@@ -63,9 +80,9 @@ export default function Navbar() {
               <li key={l.href}>
                 <button
                   onClick={() => scrollTo(l.href)}
-                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.85rem", fontWeight: 500, color: "var(--text-muted)", padding: "0.4rem 0.75rem", borderRadius: "0.5rem", transition: "color 0.2s, background 0.2s" }}
-                  onMouseEnter={e => { e.currentTarget.style.color = "var(--accent)"; e.currentTarget.style.background = "var(--accent-bg)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = "var(--text-muted)"; e.currentTarget.style.background = "transparent"; }}
+                  className="nav-link"
+                  aria-current={activeId === l.href ? "true" : undefined}
+                  style={{ background: "none", border: "none", cursor: "pointer", fontSize: "0.85rem", fontWeight: 500, color: "var(--text-muted)", padding: "0.4rem 0.75rem", borderRadius: "0.5rem" }}
                 >
                   {l.label}
                 </button>

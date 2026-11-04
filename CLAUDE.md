@@ -27,7 +27,7 @@ npm run lint      # ESLint
 All CV/portfolio content lives in `src/data/`:
 - `personal.ts` — name, email, links, tagline, stats
 - `experience.ts` — work history + education (exported as `experience` and `education`)
-- `projects.ts` — all projects with `category: "Industry" | "MLOps" | "Research"`. Portfolio project text should be more detailed than the CV (the CV is a summary). Optional `overview` adds an intro paragraph above the bullets in the card details; `link: { label, url }` shows a button on the card; optional `video: { src, poster, caption }` adds a "Watch demo video" button in the card details that opens a modal player (paths under `public/`, basePath is added automatically — keep videos well under GitHub's 100 MB limit, e.g. 720p H.264 with `+faststart`)
+- `projects.ts` — all projects with `category: "Industry" | "MLOps" | "Research"`. Portfolio project text should be more detailed than the CV (the CV is a summary). Cards show a 3-line summary (`overview`, or the first bullet if there is none); the full text opens in a details dialog. Optional `overview` adds an intro paragraph above the bullets there; `link: { label, url }` shows a button on the card; optional `video: { src, poster, caption }` adds a click-to-play video inside the project details dialog (paths under `public/`, basePath is added automatically — keep videos well under GitHub's 100 MB limit, e.g. 720p H.264 with `+faststart`)
 - `publications.ts` — papers with DOI links
 - `skills.ts` — skill groups
 - `achievements.ts` — awards + extracurricular
