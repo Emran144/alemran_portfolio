@@ -11,12 +11,6 @@ export interface Project {
   bullets: string[];
   link?: { label: string; url: string };
   highlight?: string;
-  /** Featured projects render as a wide card with media and extra detail. */
-  featured?: boolean;
-  summary?: string;
-  workflow?: string[];
-  principle?: string;
-  stack?: string[];
   /** Paths are relative to /public (basePath is added by the component). */
   video?: { src: string; poster?: string; caption?: string };
 }
@@ -29,35 +23,21 @@ export const projects: Project[] = [
     role: "End-to-End AI/ML Developer",
     period: "2026 – Present",
     category: "Industry",
-    featured: true,
-    tags: ["Agentic AI", "Human-in-the-Loop", "OCR", "Banking", "Playwright", "TTS"],
+    tags: ["Agentic AI", "LLM Tool Use", "Handwritten OCR", "Bangla/English", "Human-in-the-Loop", "Neural TTS"],
     highlight: "Proof of concept · Human interaction cut from 19 clicks to 4 decision points",
-    summary:
-      "Bangladeshi banks must re-verify every customer's KYC on a fixed schedule — yearly for high-risk and every five years for low-risk customers. At Prime Bank this was manual: branches collect paper forms, staff re-key them, and Operations checks them against the core banking system (Temenos T24) for a base of over a million customers. I built an offline, end-to-end interactive prototype of an agentic KYC platform from the bank's signed Business Requirements Document.",
-    workflow: [
-      "Customer selection — the agent turns the bank's goal into a read-only query and selects due/expired customers, with a reason for each.",
-      "Notification campaign — personal SMS & email, delivery tracking, retries, reminders, and a Need-to-Block list.",
-      "Submission intake — branch submissions are queued for AI processing as they arrive.",
-      "Document reading — OCR on handwritten & printed Bangla/English forms; fields below 80% confidence go to a person.",
-      "Previous vs new KYC comparison — formatting-only differences (e.g. \"Rd-5\" vs \"Road 5\") are ignored.",
-      "Logical-consistency checks — limit vs income, implausible profession changes, source of funds, missing documents.",
-      "Routing — clean cases go straight-through; others become cases where an officer approves, requests info, or blocks.",
-    ],
-    principle:
-      "The AI recommends, a human decides. Facts come from deterministic tools, the agent never writes to the core banking system, every change is a change set approved by a named officer, and tool failures are never treated as passes.",
     bullets: [
-      "Agent-first UX: buttons appear only where a person has to decide; a live feed labels every action as AI, customer, or officer.",
-      "Cut human interaction in the demo flow from 19 clicks to 4 decision points (Approve, Request info, Block, Escalate) and added a \"human touches per 100 customers\" KPI.",
-      "Operations dashboard with AI/human work split, findings by type, branch progress, before-vs-after comparison, and an AI-written management report.",
-      "23 story customers, each covering a real edge case (e.g. a retiree who now owns a tailoring shop).",
-      "Narrated auto-play demo with synchronised cursor, spotlight, and captions (0.5×–2×), produced by a Python TTS pipeline and Playwright recording with piecewise retiming, plus automated end-to-end checks for JS errors, voice overlaps, and stalls.",
-      "Delivery documents: business glossary, bank integration dependencies, and a UAT test-data use-case catalogue.",
+      "Built an end-to-end agentic AI prototype that automates periodic KYC re-verification for a customer base of over a million, based on the bank's signed BRD.",
+      "The agent turns business goals into read-only queries to select due/expired customers (with a reason for each) and runs SMS/email notification and reminder campaigns.",
+      "OCR on handwritten and printed Bangla/English KYC forms with per-field confidence scores; fields below 80% confidence are routed to a human.",
+      "Compares previous vs new KYC while ignoring formatting-only differences, and runs logical-consistency checks (limit vs income, profession-change plausibility, source of funds, missing documents).",
+      "Routes consistent cases to straight-through processing and flagged ones to an Operations review portal, where an officer approves, requests info (agent-drafted), or blocks.",
+      "Design principle: the AI recommends, a human decides — facts come from deterministic tools, the agent never writes to the core banking system (Temenos T24), and every change is approved by a named officer with a full audit trail.",
+      "Operations dashboard with AI/human work split, findings by type, and an AI-written management report; narrated demo voiced with neural text-to-speech.",
     ],
-    stack: ["Vanilla JS SPA (offline, no build)", "HTML/CSS", "Custom charts", "Python", "Playwright", "ffmpeg", "NumPy", "edge-tts"],
     video: {
       src: "/projects/agentic-kyc-demo.mp4",
       poster: "/projects/agentic-kyc-poster.jpg",
-      caption: "Narrated end-to-end demo (7 min)",
+      caption: "Agentic KYC — narrated end-to-end demo (7 min)",
     },
   },
   {
