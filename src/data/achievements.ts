@@ -1,5 +1,12 @@
 export const achievements = [
   {
+    id: 0,
+    year: "2026–Present",
+    title: "MSc Tuition Fee Waiver – BRAC University",
+    description: "Awarded a CGPA-based tuition fee waiver for the MSc program at BRAC University.",
+    icon: "star",
+  },
+  {
     id: 1,
     year: 2024,
     title: 'Scholastic Award "Summa Cum Laude"',
@@ -73,6 +80,18 @@ export const extracurricular = [
     role: "Volunteer",
     org: "ICAICT 2020 and various national/international events",
     period: "2022",
+    desc: "",
+  },
+  {
+    role: "Former Member",
+    org: "Bangladesh Biggan Porishod",
+    period: "2016–2018",
+    desc: "",
+  },
+  {
+    role: "Former Scout Group Leader",
+    org: "Shahebrampur High School",
+    period: "2012–2014",
     desc: "",
   },
 ];

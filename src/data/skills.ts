@@ -10,8 +10,9 @@ export const skillGroups = [
     skills: [
       "PyTorch", "TensorFlow", "Scikit-learn", "NumPy", "Pandas", "Matplotlib",
       "Hugging Face (Transformers, Datasets, Accelerate)",
-      "Linear/Logistic Regression", "CNN", "RNN", "LSTM", "Transformers",
-      "BERT", "YOLo", "Donut", "RL", "RLHF",
+      "Linear/Logistic Regression", "Decision Trees", "Random Forests", "SVM", "XGBoost",
+      "K-Means", "PCA", "CNN", "RNN", "LSTM", "Transformers",
+      "BERT", "YOLO", "Donut", "RL", "RLHF",
     ],
   },
   {
@@ -19,10 +20,10 @@ export const skillGroups = [
     icon: "sparkles",
     skills: [
       "LLaMA", "Qwen", "Mistral", "Granite", "DeepSeek", "Gemma", "GPT-OSS",
-      "OpenAI API", "Anthropic (Claude)", "Google Gemini",
-      "LangChain", "Prompt Engineering", "Vision Transformers", "MCP",
-      "RAG Pipelines", "Graph RAG (Neo4j)", "Pinecone", "FAISS",
-      "DeepSeek-OCR", "Surya", "LightOn", "EasyOCR", "TrOCR", "olmOCR",
+      "OpenAI API", "Anthropic (Claude)", "Google Gemini", "Alibaba DashScope", "Together AI",
+      "LangChain", "Prompt Engineering", "Vision Transformers", "MCP", "Agentic AI",
+      "RAG Pipelines", "Graph RAG (Neo4j)", "Pinecone", "FAISS", "Adaptive Chunking",
+      "DeepSeek-OCR", "Chandra", "Surya", "LightOn", "PaddleOCR", "EasyOCR", "Tesseract", "TrOCR", "olmOCR",
     ],
   },
   {
@@ -32,7 +33,7 @@ export const skillGroups = [
       "vLLM", "Ollama", "Together AI", "TensorRT",
       "Flask", "FastAPI", "Gradio", "Django",
       "AWS", "S3", "API Development & Hosting",
-      "n8n", "CI/CD Workflows", "Jira",
+      "n8n", "CI/CD Workflows", "MLOps Workflows", "Jira",
     ],
   },
   {

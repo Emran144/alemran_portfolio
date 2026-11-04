@@ -9,11 +9,57 @@ export interface Project {
   category: ProjectCategory;
   tags: string[];
   bullets: string[];
-  link?: string;
+  link?: { label: string; url: string };
   highlight?: string;
+  /** Featured projects render as a wide card with media and extra detail. */
+  featured?: boolean;
+  summary?: string;
+  workflow?: string[];
+  principle?: string;
+  stack?: string[];
+  /** Paths are relative to /public (basePath is added by the component). */
+  video?: { src: string; poster?: string; caption?: string };
 }
 
 export const projects: Project[] = [
+  {
+    id: 14,
+    title: "Agentic KYC",
+    subtitle: "AI-assisted customer KYC re-verification for Prime Bank PLC",
+    role: "End-to-End AI/ML Developer",
+    period: "2026 – Present",
+    category: "Industry",
+    featured: true,
+    tags: ["Agentic AI", "Human-in-the-Loop", "OCR", "Banking", "Playwright", "TTS"],
+    highlight: "Proof of concept · Human interaction cut from 19 clicks to 4 decision points",
+    summary:
+      "Bangladeshi banks must re-verify every customer's KYC on a fixed schedule — yearly for high-risk and every five years for low-risk customers. At Prime Bank this was manual: branches collect paper forms, staff re-key them, and Operations checks them against the core banking system (Temenos T24) for a base of over a million customers. I built an offline, end-to-end interactive prototype of an agentic KYC platform from the bank's signed Business Requirements Document.",
+    workflow: [
+      "Customer selection — the agent turns the bank's goal into a read-only query and selects due/expired customers, with a reason for each.",
+      "Notification campaign — personal SMS & email, delivery tracking, retries, reminders, and a Need-to-Block list.",
+      "Submission intake — branch submissions are queued for AI processing as they arrive.",
+      "Document reading — OCR on handwritten & printed Bangla/English forms; fields below 80% confidence go to a person.",
+      "Previous vs new KYC comparison — formatting-only differences (e.g. \"Rd-5\" vs \"Road 5\") are ignored.",
+      "Logical-consistency checks — limit vs income, implausible profession changes, source of funds, missing documents.",
+      "Routing — clean cases go straight-through; others become cases where an officer approves, requests info, or blocks.",
+    ],
+    principle:
+      "The AI recommends, a human decides. Facts come from deterministic tools, the agent never writes to the core banking system, every change is a change set approved by a named officer, and tool failures are never treated as passes.",
+    bullets: [
+      "Agent-first UX: buttons appear only where a person has to decide; a live feed labels every action as AI, customer, or officer.",
+      "Cut human interaction in the demo flow from 19 clicks to 4 decision points (Approve, Request info, Block, Escalate) and added a \"human touches per 100 customers\" KPI.",
+      "Operations dashboard with AI/human work split, findings by type, branch progress, before-vs-after comparison, and an AI-written management report.",
+      "23 story customers, each covering a real edge case (e.g. a retiree who now owns a tailoring shop).",
+      "Narrated auto-play demo with synchronised cursor, spotlight, and captions (0.5×–2×), produced by a Python TTS pipeline and Playwright recording with piecewise retiming, plus automated end-to-end checks for JS errors, voice overlaps, and stalls.",
+      "Delivery documents: business glossary, bank integration dependencies, and a UAT test-data use-case catalogue.",
+    ],
+    stack: ["Vanilla JS SPA (offline, no build)", "HTML/CSS", "Custom charts", "Python", "Playwright", "ffmpeg", "NumPy", "edge-tts"],
+    video: {
+      src: "/projects/agentic-kyc-demo.mp4",
+      poster: "/projects/agentic-kyc-poster.jpg",
+      caption: "Narrated end-to-end demo (7 min)",
+    },
+  },
   {
     id: 1,
     title: "XtractAI",
@@ -28,27 +74,27 @@ export const projects: Project[] = [
       "Enabled automated extraction of key data from diverse document types (PDFs, forms, images).",
       "Provided live product access for evaluation with 1,000 free credits upon Gmail login.",
     ],
-    link: "https://xtractai.example.com",
     highlight: "Ongoing development: continuously integrating new Document AI capabilities",
+    link: { label: "Try XtractAI live", url: "https://xtract.ai.sscl.tech/doc-extraction" },
   },
   {
     id: 2,
     title: "e-KYC",
     subtitle: "Electronic Know Your Customer System",
     role: "System Architect | Engineering Manager | Lead Developer",
-    period: "2025 – Present",
+    period: "2025 – 2026",
     category: "Industry",
     tags: ["Computer Vision", "OCR", "VLM", "NID Verification", "Liveness Detection"],
     bullets: [
-      "Led end-to-end product strategy, architecture, and development of an AI-powered e-KYC system.",
-      "API integration with the Bangladesh Election Commission for real-time NID verification and facial matching.",
-      "Built an advanced image processing + OCR pipeline (dewarping, blur/light detection, angle correction).",
-      "Fine-tuned VLMs achieving 97.48%+ (English) and 91.23% (Bangla) NID text extraction accuracy.",
-      "Implemented instruction-based video liveness detection and live-to-NID face matching to prevent identity fraud.",
+      "Led end-to-end product strategy, architecture, and development of a production e-KYC platform, live across 3 banks and 2 financial organizations for secure digital onboarding.",
+      "Integrated with the Bangladesh Election Commission for NID verification and facial matching.",
+      "Built an advanced image-processing + OCR pipeline (dewarping, blur/light detection, angle correction, enhancement) with optimized GPU inference, reducing OCR latency from 16 s to under 1 s.",
+      "Fine-tuned NID-specific models achieving 97.48%+ English and 91.23% Bangla extraction accuracy (exact match) on real banking data.",
+      "Implemented video liveness detection, replay-attack prevention, and live-to-NID face matching for identity-fraud prevention.",
       "Designed an administrative portal with analytics, monitoring, and role-based access control.",
     ],
-    link: "https://tap.app",
-    highlight: "Deployed in TAP App",
+    highlight: "Deployed in TAP App · Live across 3 banks & 2 financial organizations",
+    link: { label: "TAP App on Google Play", url: "https://play.google.com/store/apps/details?id=com.trustandpay.customer" },
   },
   {
     id: 3,
@@ -63,7 +109,7 @@ export const projects: Project[] = [
       "Converted unstructured LC messages into executable business logic and verified against automatically extracted trade document data.",
       "Implemented a multi-modal AI approach using a fine-tuned GPT-OSS-20B model integrated with DotOCR.",
     ],
-    highlight: "Achieved 82% reduction in cost and manual effort",
+    highlight: "Achieved 92% reduction in cost and manual effort",
   },
   {
     id: 4,
@@ -108,6 +154,19 @@ export const projects: Project[] = [
       "Developed financial document classification and table extraction leveraging LayoutLMv2.",
     ],
     highlight: "Supports 24+ financial document types",
+  },
+  {
+    id: 15,
+    title: "SQA Automation",
+    role: "Developer",
+    period: "2025",
+    category: "Industry",
+    tags: ["QA Automation", "Playwright", "Productivity"],
+    bullets: [
+      "Developed an internal productivity tool for QA operations that adapts to dynamic UI and operational changes based on client requirements.",
+      "Minimized manual test-case writing after each change, significantly reducing QA effort and accelerating release cycles.",
+    ],
+    highlight: "Internal productivity tool",
   },
   {
     id: 7,
@@ -163,7 +222,7 @@ export const projects: Project[] = [
     id: 11,
     title: "ZeroDepthFAS",
     subtitle: "Passive Human Face Liveness Detection",
-    role: "Researcher",
+    role: "MSc Coursework & Ongoing Research",
     period: "2026",
     category: "Research",
     tags: ["Vision Transformer", "EfficientNet", "Face Anti-Spoofing", "REST API"],
@@ -178,7 +237,7 @@ export const projects: Project[] = [
     id: 12,
     title: "HealthCareGPT",
     subtitle: "LLM + RAG for Disease Prediction",
-    role: "Researcher",
+    role: "Coursework",
     period: "2024",
     category: "Research",
     tags: ["LLM", "RAG", "Healthcare", "NLP"],
@@ -190,12 +249,25 @@ export const projects: Project[] = [
   {
     id: 13,
     title: "RLHF-Enhanced Document Classification (LayoutLM)",
-    role: "Researcher",
+    role: "Coursework",
     period: "2024",
     category: "Research",
     tags: ["RLHF", "LayoutLM", "Document AI", "Financial"],
     bullets: [
       "Integrated Reinforcement Learning with Human Feedback (RLHF) to improve LayoutLM-based financial document classification.",
+    ],
+  },
+  {
+    id: 16,
+    title: "UIU EMAS",
+    subtitle: "Event Management & Archiving System",
+    role: "Team Project",
+    period: "2022",
+    category: "Research",
+    tags: ["Web App", "Software Engineering"],
+    bullets: [
+      "Web-based system for managing the CSE Project Show & Club Forum Fest.",
+      "Built as part of a Software Engineering course project — Champion, UIU CSE Project Show (Fall 2022).",
     ],
   },
 ];

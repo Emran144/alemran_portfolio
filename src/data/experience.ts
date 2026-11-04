@@ -5,12 +5,12 @@ export const experience = [
     company: "Spectrum Software & Consulting (Pvt.) Ltd.",
     period: "Jan 2025 – Present",
     bullets: [
-      "Leading a 6+ member ML team under CTO supervision.",
-      "Driving AI/ML initiatives across enterprise projects in document intelligence, RPA, and GenAI.",
-      "Architecting scalable solutions using LLMs, VLMs, OCR, and RAG pipelines for real-world problems.",
-      "Fine-tuning models for enterprise-specific optimization.",
-      "Leading technical strategy for AI-based products like e-KYC, XtractAI, and SpectraTrade.",
-      "Introduced internal tools (Semi-Auto Annotator, QA Automation) to streamline development cycles.",
+      "Lead a 6+ member ML team and drive AI/ML initiatives across banking, FinTech, RMG, and enterprise automation.",
+      "Engage with 10+ banks and 5+ financial organizations to identify AI/ML opportunities and deliver POCs and production solutions.",
+      "Architect and deploy low-resource AI solutions using LLMs, VLMs, OCR, RAG, and Document AI across SaaS and secure on-premises environments.",
+      "Lead AI product strategy, technical proposals, tenders, solution costing, and pricing for products including e-KYC, XtractAI, and SpectraTrade.",
+      "Oversee model development, fine-tuning, MLOps, deployment, and production integration.",
+      "Introduced internal AI/ML productivity tools, including Semi-Auto Annotator and QA Automation.",
     ],
   },
   {
@@ -19,11 +19,12 @@ export const experience = [
     company: "Spectrum Software & Consulting (Pvt.) Ltd.",
     period: "Jul 2022 – Dec 2024",
     bullets: [
-      "Deployed ML solutions in secure, regulated environments for finance and manufacturing.",
-      "Built modular pipelines for document classification, key-value extraction, and OCR tasks.",
-      "Fine-tuned models (LayoutLMv2, Donut, YOLO, LLaMA) for trade finance and compliance use cases.",
-      "Integrated ML via APIs and automation tools for seamless workflows.",
-      "Contributed to tools for model monitoring, retraining, and human-in-the-loop feedback.",
+      "Developed and deployed production AI/ML solutions for banking, FinTech, trade finance, and manufacturing.",
+      "Built Document AI pipelines for classification, OCR, information extraction, and table/document understanding.",
+      "Fine-tuned models including LayoutLMv2, Donut, YOLO, and LLaMA for enterprise financial use cases.",
+      "Developed ML APIs and integrated AI solutions with enterprise applications and RPA workflows.",
+      "Built domain-specific datasets, annotation pipelines, and human-in-the-loop feedback systems.",
+      "Contributed to model evaluation, monitoring, retraining, and secure on-premises deployment.",
     ],
   },
   {
@@ -48,16 +49,25 @@ export const experience = [
   },
 ];
 
-export const education = [
+export interface Education {
+  id: number;
+  degree: string;
+  institution: string;
+  country: string;
+  period: string;
+  cgpa?: string;
+  award?: string;
+  note?: string;
+}
+
+export const education: Education[] = [
   {
     id: 1,
     degree: "MSc in Computer Science and Engineering",
     institution: "BRAC University",
     country: "Bangladesh",
     period: "Jan 2026 – Present",
-    cgpa: "4.00 / 4.00 (so far)",
-    thesis: "Multimodal AI (NLP, Computer Vision, and Agentic AI)",
-    note: "Running: Advance RL & Big Data Analysis | Completed: Advance NLP & Deep Learning for Computer Vision",
+    note: "Running: Generative Machine Learning, Advanced Parallel Algorithms · Completed: Advanced AI, Advanced NLP, Advanced RL, Computer Vision, Big Data Analytics",
   },
   {
     id: 2,

@@ -6,7 +6,7 @@ export default function Experience() {
   return (
     <section id="experience" aria-labelledby="experience-heading" style={{ padding: "5rem 1.5rem", backgroundColor: "var(--bg)" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
-        <SectionHeader id="experience-heading" title="Experience" subtitle="4+ years building enterprise AI systems" />
+        <SectionHeader id="experience-heading" title="Experience" subtitle="4.5+ years building enterprise AI systems" />
 
         <ol style={{ listStyle: "none", margin: 0, padding: 0, position: "relative" }}>
           <div aria-hidden="true" style={{ position: "absolute", left: "1.25rem", top: 0, bottom: 0, width: 2, backgroundColor: "var(--border)", borderRadius: 1 }} />

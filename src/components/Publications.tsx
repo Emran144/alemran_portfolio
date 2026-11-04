@@ -12,7 +12,7 @@ export default function Publications() {
   return (
     <section id="publications" aria-labelledby="pubs-heading" style={{ padding: "5rem 1.5rem", backgroundColor: "var(--bg)" }}>
       <div style={{ maxWidth: 900, margin: "0 auto" }}>
-        <SectionHeader id="pubs-heading" title="Publications" subtitle="Peer-reviewed research contributions" />
+        <SectionHeader id="pubs-heading" title="Publications" subtitle="Journal, conference & preprint contributions" />
 
         <ol style={{ display: "flex", flexDirection: "column", gap: "1.5rem", listStyle: "none", margin: 0, padding: 0 }}>
           {publications.map((pub, i) => (

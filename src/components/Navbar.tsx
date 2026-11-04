@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useTheme } from "./ThemeProvider";
+import { basePath } from "@/data/personal";
 
 const NAV_LINKS = [
   { label: "About",        href: "#about" },
@@ -47,11 +48,11 @@ export default function Navbar() {
           style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
         >
           <Image
-            src="/alemran_portfolio/logo.png"
+            src={`${basePath}/logo-nav.png`}
             alt="Al Emran logo"
-            width={110}
+            width={50}
             height={44}
-            style={{ objectFit: "contain" }}
+            style={{ objectFit: "contain", borderRadius: "0.5rem" }}
             priority
           />
         </button>

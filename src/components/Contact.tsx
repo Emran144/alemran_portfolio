@@ -15,7 +15,7 @@ export default function Contact() {
       <div style={{ maxWidth: 700, margin: "0 auto" }}>
         <SectionHeader id="contact-heading" title="Get in Touch" />
         <p style={{ color: "var(--text-muted)", fontSize: "1rem", lineHeight: 1.8, marginBottom: "3rem", marginTop: "-1rem" }}>
-          I&apos;m always open to interesting research collaborations, enterprise AI challenges, and opportunities to push the boundaries of Document AI and Generative AI. Feel free to reach out!
+          I&apos;m always open to interesting research collaborations, enterprise AI challenges, and opportunities to push the boundaries of Document AI, Generative AI, and Agentic AI. Feel free to reach out!
         </p>
 
         <address style={{ fontStyle: "normal" }}>
@@ -41,7 +41,7 @@ export default function Contact() {
 
         <a
           href={`mailto:${personal.email}`}
-          style={{ display: "inline-block", padding: "0.875rem 2.5rem", borderRadius: "0.75rem", fontWeight: 700, fontSize: "1rem", backgroundColor: "var(--accent)", color: "#fff", textDecoration: "none" }}
+          style={{ display: "inline-block", padding: "0.875rem 2.5rem", borderRadius: "0.75rem", fontWeight: 700, fontSize: "1rem", backgroundColor: "var(--accent)", color: "var(--on-accent)", textDecoration: "none" }}
           onMouseEnter={e => ((e.target as HTMLElement).style.opacity = "0.85")}
           onMouseLeave={e => ((e.target as HTMLElement).style.opacity = "1")}
         >

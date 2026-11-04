@@ -7,7 +7,7 @@ export default function About() {
   return (
     <section id="about" aria-labelledby="about-heading" style={{ backgroundColor: "var(--bg-secondary)", padding: "5rem 1.5rem" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <SectionHeader id="about-heading" title="About Me" subtitle="Machine Learning Engineer building real-world AI solutions" />
+        <SectionHeader id="about-heading" title="About Me" subtitle="ML engineer and team lead building real-world AI solutions" />
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "3rem", alignItems: "start" }}>
           <div>
@@ -31,14 +31,14 @@ export default function About() {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "0.25rem", marginBottom: "0.25rem" }}>
                     <strong style={{ fontWeight: 700, color: "var(--text)", fontSize: "0.95rem" }}>{edu.institution}</strong>
-                    <span style={{ fontSize: "0.75rem", color: "var(--accent)", fontWeight: 600, backgroundColor: "var(--accent-bg)", padding: "0.2rem 0.5rem", borderRadius: "0.375rem" }}>CGPA {edu.cgpa}</span>
+                    {edu.cgpa && <span style={{ fontSize: "0.75rem", color: "var(--accent)", fontWeight: 600, backgroundColor: "var(--accent-bg)", padding: "0.2rem 0.5rem", borderRadius: "0.375rem" }}>CGPA {edu.cgpa}</span>}
                   </div>
                   <p style={{ color: "var(--text-muted)", fontSize: "0.875rem" }}>{edu.degree}</p>
                   <p style={{ color: "var(--text-muted)", fontSize: "0.8rem", marginTop: "0.2rem" }}>
                     <time>{edu.period}</time>
                     {edu.award && <span style={{ marginLeft: "0.5rem", color: "#f59e0b", fontWeight: 600 }}>★ {edu.award}</span>}
                   </p>
-                  {edu.thesis && <p style={{ color: "var(--text-muted)", fontSize: "0.8rem", marginTop: "0.5rem" }}><strong>Thesis:</strong> {edu.thesis}</p>}
+                  {edu.note && <p style={{ color: "var(--text-muted)", fontSize: "0.8rem", marginTop: "0.5rem", lineHeight: 1.6 }}>{edu.note}</p>}
                 </li>
               ))}
             </ol>

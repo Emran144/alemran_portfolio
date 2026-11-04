@@ -1,11 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { personal } from "@/data/personal";
+import { personal, basePath } from "@/data/personal";
 
 const ROLES = [
   "Senior ML Engineer",
   "ML Team Lead",
+  "Agentic AI Engineer",
   "Document AI Specialist",
   "GenAI Engineer",
   "Applied ML Researcher",
@@ -25,7 +26,7 @@ export default function Hero() {
       t = setTimeout(() => setDeleting(true), 2000);
     else if (deleting && displayed.length > 0)
       t = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 35);
-    else { setDeleting(false); setRoleIdx(i => (i + 1) % ROLES.length); }
+    else t = setTimeout(() => { setDeleting(false); setRoleIdx(i => (i + 1) % ROLES.length); }, 300);
     return () => clearTimeout(t);
   }, [displayed, deleting, roleIdx]);
 
@@ -54,7 +55,7 @@ export default function Hero() {
           <div style={{ width: 260, height: 260, borderRadius: "50%", padding: 3, background: "linear-gradient(135deg, var(--accent), var(--violet))", boxShadow: "0 0 48px color-mix(in srgb, var(--accent) 25%, transparent)" }}>
             <div style={{ width: "100%", height: "100%", borderRadius: "50%", overflow: "hidden", border: "4px solid var(--bg)" }}>
               <Image
-                src="/alemran_portfolio/avatar.png"
+                src={`${basePath}/avatar.jpg`}
                 alt="Md Al Emran Hossain"
                 width={260}
                 height={260}
@@ -93,7 +94,7 @@ export default function Hero() {
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             <button
               onClick={() => document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })}
-              style={{ padding: "0.7rem 1.75rem", borderRadius: "0.625rem", fontWeight: 600, fontSize: "0.9rem", cursor: "pointer", border: "none", backgroundColor: "var(--accent)", color: "#fff" }}
+              style={{ padding: "0.7rem 1.75rem", borderRadius: "0.625rem", fontWeight: 600, fontSize: "0.9rem", cursor: "pointer", border: "none", backgroundColor: "var(--accent)", color: "var(--on-accent)" }}
             >
               View Projects
             </button>
