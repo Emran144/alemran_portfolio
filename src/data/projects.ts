@@ -8,6 +8,8 @@ export interface Project {
   period: string;
   category: ProjectCategory;
   tags: string[];
+  /** Optional paragraph shown above the bullets in the card details. */
+  overview?: string;
   bullets: string[];
   link?: { label: string; url: string };
   highlight?: string;
@@ -25,14 +27,22 @@ export const projects: Project[] = [
     category: "Industry",
     tags: ["Agentic AI", "LLM Tool Use", "Handwritten OCR", "Bangla/English", "Human-in-the-Loop", "Neural TTS"],
     highlight: "Proof of concept · Human interaction cut from 19 clicks to 4 decision points",
+    overview:
+      "Bangladeshi banks must re-verify every customer's KYC on a fixed schedule — every year for high-risk customers and every five years for low-risk ones. At Prime Bank this was manual: branches collect paper forms, staff re-key them, and Operations checks them against the core banking system (Temenos T24). With a base of over a million customers, this is slow, inconsistent, and hard to audit. I built an offline, end-to-end interactive prototype of an agentic KYC platform from the bank's signed Business Requirements Document, covering the full process from start to finish.",
     bullets: [
-      "Built an end-to-end agentic AI prototype that automates periodic KYC re-verification for a customer base of over a million, based on the bank's signed BRD.",
-      "The agent turns business goals into read-only queries to select due/expired customers (with a reason for each) and runs SMS/email notification and reminder campaigns.",
-      "OCR on handwritten and printed Bangla/English KYC forms with per-field confidence scores; fields below 80% confidence are routed to a human.",
-      "Compares previous vs new KYC while ignoring formatting-only differences, and runs logical-consistency checks (limit vs income, profession-change plausibility, source of funds, missing documents).",
-      "Routes consistent cases to straight-through processing and flagged ones to an Operations review portal, where an officer approves, requests info (agent-drafted), or blocks.",
-      "Design principle: the AI recommends, a human decides — facts come from deterministic tools, the agent never writes to the core banking system (Temenos T24), and every change is approved by a named officer with a full audit trail.",
-      "Operations dashboard with AI/human work split, findings by type, and an AI-written management report; narrated demo voiced with neural text-to-speech.",
+      "Customer selection: the agent turns the bank's goal into a read-only query, scans the customer database, and selects customers whose KYC is due or expired, recording a reason for each.",
+      "Notification campaign: personalised SMS and email notices with delivery tracking, retries, automatic reminders, and a Need-to-Block list.",
+      "Submission intake: branch submissions are picked up as they arrive and placed in an AI processing queue.",
+      "Document reading: handwritten and printed Bangla/English KYC forms are read by OCR, with a bounding box and confidence score on every field; fields below 80% confidence are routed to a person.",
+      "Previous vs new KYC comparison: detects real changes while ignoring formatting-only differences (e.g. \"Rd-5\" vs \"Road 5\").",
+      "Logical-consistency checks: e.g. a garments owner declaring a very low transaction limit, a limit far above stated income, an implausible profession change (farmer → corporate employee), source of funds vs profession, and missing profession documents.",
+      "Routing: consistent cases go to straight-through processing (STP); flagged ones become cases in the Operations review portal, where an officer approves, requests more information (the agent drafts and sends the request), blocks, or escalates.",
+      "Design principle — \"The AI recommends, a human decides\": the agent plans and runs the work, but facts come from deterministic tools. It never writes to the core banking system; every change becomes a change set approved by a named officer, every action is logged for audit, and tool failures are never treated as passes.",
+      "Agent-first UX: buttons appear only where a person has to decide; everything else runs automatically, with a live feed labelling each action as AI, customer, or officer. Human interaction in the demo flow dropped from 19 clicks to 4 decision points (Approve, Request info, Block, Escalate), tracked by a \"human touches per 100 customers\" KPI.",
+      "Operations dashboard showing the AI/human work split, findings by type, branch progress, a before-vs-after comparison, and an AI-written management report.",
+      "23 story customers, each demonstrating a real edge case — e.g. a housewife declaring a ৳20 lakh limit without a source-of-funds declaration, or a retiree who now owns a tailoring shop.",
+      "Narrated auto-play demo voiced with Microsoft neural text-to-speech (edge-tts), with word-level timing alignment driving a synchronised cursor, spotlight, and captions (adjustable 0.5×–2×), plus automated end-to-end quality checks.",
+      "Delivery documents: business glossary, bank integration dependencies, and a UAT test-data use-case catalogue.",
     ],
     video: {
       src: "/projects/agentic-kyc-demo.mp4",
@@ -67,10 +77,10 @@ export const projects: Project[] = [
     tags: ["Computer Vision", "OCR", "VLM", "NID Verification", "Liveness Detection"],
     bullets: [
       "Led end-to-end product strategy, architecture, and development of a production e-KYC platform, live across 3 banks and 2 financial organizations for secure digital onboarding.",
-      "Integrated with the Bangladesh Election Commission for NID verification and facial matching.",
+      "Integrated with the Bangladesh Election Commission (EC) API for real-time NID verification and facial matching.",
       "Built an advanced image-processing + OCR pipeline (dewarping, blur/light detection, angle correction, enhancement) with optimized GPU inference, reducing OCR latency from 16 s to under 1 s.",
-      "Fine-tuned NID-specific models achieving 97.48%+ English and 91.23% Bangla extraction accuracy (exact match) on real banking data.",
-      "Implemented video liveness detection, replay-attack prevention, and live-to-NID face matching for identity-fraud prevention.",
+      "Fine-tuned NID-specific VLMs achieving 97.48%+ English and 91.23% Bangla text extraction accuracy (exact match) on real banking data.",
+      "Implemented instruction-based video liveness detection, replay-attack prevention, and live-to-NID face matching for identity-fraud prevention.",
       "Designed an administrative portal with analytics, monitoring, and role-based access control.",
     ],
     highlight: "Deployed in TAP App · Live across 3 banks & 2 financial organizations",

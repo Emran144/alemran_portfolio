@@ -105,6 +105,9 @@ function ProjectCard({ proj, expanded, onToggle, onPlay }: { proj: Project; expa
 
       {expanded && (
         <div id={detailsId} style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+          {proj.overview && (
+            <p style={{ color: "var(--text-muted)", fontSize: "0.825rem", lineHeight: 1.7 }}>{proj.overview}</p>
+          )}
           <ul style={{ display: "flex", flexDirection: "column", gap: "0.375rem", margin: 0, padding: 0, listStyle: "none" }}>
             {proj.bullets.map((b, i) => (
               <li key={i} style={{ display: "flex", gap: "0.5rem", color: "var(--text-muted)", fontSize: "0.825rem", lineHeight: 1.6 }}>

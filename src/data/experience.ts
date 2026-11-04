@@ -5,7 +5,7 @@ export const experience = [
     company: "Spectrum Software & Consulting (Pvt.) Ltd.",
     period: "Jan 2025 – Present",
     bullets: [
-      "Lead a 6+ member ML team and drive AI/ML initiatives across banking, FinTech, RMG, and enterprise automation.",
+      "Lead a 6+ member ML team under CTO supervision and drive AI/ML initiatives across banking, FinTech, RMG, and enterprise automation.",
       "Engage with 10+ banks and 5+ financial organizations to identify AI/ML opportunities and deliver POCs and production solutions.",
       "Architect and deploy low-resource AI solutions using LLMs, VLMs, OCR, RAG, and Document AI across SaaS and secure on-premises environments.",
       "Lead AI product strategy, technical proposals, tenders, solution costing, and pricing for products including e-KYC, XtractAI, and SpectraTrade.",
@@ -20,8 +20,8 @@ export const experience = [
     period: "Jul 2022 – Dec 2024",
     bullets: [
       "Developed and deployed production AI/ML solutions for banking, FinTech, trade finance, and manufacturing.",
-      "Built Document AI pipelines for classification, OCR, information extraction, and table/document understanding.",
-      "Fine-tuned models including LayoutLMv2, Donut, YOLO, and LLaMA for enterprise financial use cases.",
+      "Built modular Document AI pipelines for classification, OCR, key-value information extraction, and table/document understanding.",
+      "Fine-tuned models including LayoutLMv2, Donut, YOLO, and LLaMA for trade finance, compliance, and other enterprise financial use cases.",
       "Developed ML APIs and integrated AI solutions with enterprise applications and RPA workflows.",
       "Built domain-specific datasets, annotation pipelines, and human-in-the-loop feedback systems.",
       "Contributed to model evaluation, monitoring, retraining, and secure on-premises deployment.",
